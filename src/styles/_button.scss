@@ -1,0 +1,19 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  padding: 0 20px;
+  color: $white-color;
+  background-color: $main-color;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 700;
+  transition: 0.1s background-color ease-in-out;
+  &:hover {
+    background-color: $button-hover-color;
+  }
+}
