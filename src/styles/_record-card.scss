@@ -1,0 +1,47 @@
+.record {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 0 28px;
+  height: 80px;
+  width: 726px;
+  border-radius: 8px;
+  background-color: $white-color;
+  transition: 0.1s background-color ease-in-out;
+  cursor: pointer;
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      h3 {
+        color: $text-black-color;
+        font-weight: 400;
+        font-size: 16px;
+      }
+      small {
+        font-size: 14px;
+        color: $text-gray-color;
+      }
+    }
+  }
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    p {
+      color: $text-second-black-color;
+    }
+    strong {
+      color: $text-second-black-color;
+      font-weight: 500;
+    }
+  }
+  &:hover {
+    background-color: rgba(79, 117, 194, 0.21);
+  }
+}
