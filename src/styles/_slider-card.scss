@@ -1,0 +1,22 @@
+.slider-card {
+  width: 327px;
+  &__footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    h4 {
+      font-size: 16px;
+      color: $text-black-color;
+    }
+    span {
+      background-color: #6c7072;
+      width: 3px;
+      height: 3px;
+      border-radius: 50vw;
+    }
+    small {
+      font-size: 14px;
+      color: #6c7072;
+    }
+  }
+}

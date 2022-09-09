@@ -1,0 +1,22 @@
+.slider {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  &__cards {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    width: 48px;
+    background-color: #eee;
+    border-radius: 50vw;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+  }
+}

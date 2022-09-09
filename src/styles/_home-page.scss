@@ -1,0 +1,24 @@
+.home-page {
+  &__logo {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    p {
+      text-align: right;
+      font-size: 14px;
+      font-weight: 700;
+    }
+  }
+  &__search {
+    h2 {
+      font-size: 32px;
+      margin-bottom: 18px;
+    }
+  }
+  &__news {
+    margin-top: 100px;
+    h2 {
+      font-size: 32px;
+      margin-bottom: 50px;
+    }
+  }
+}
