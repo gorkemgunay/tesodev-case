@@ -1,0 +1,38 @@
+.input__container {
+}
+
+.input {
+  height: 46px;
+  background-color: $white-color;
+  border-radius: 8px;
+  border: 1.5px solid $label-text-color;
+  padding: 0 17px;
+  transition: 0.1s background-color ease-in-out;
+  font-weight: 700;
+  &::placeholder {
+    color: rgba(100, 100, 100, 0.5);
+  }
+  &:hover {
+    background-color: rgba(100, 100, 100, 0.08);
+  }
+  &.input-error {
+    border: 1.5px solid $error-text-color;
+  }
+}
+
+.input__label {
+  display: block;
+  margin-bottom: 7px;
+  color: $label-text-color;
+  font-weight: 700;
+  &.label-error {
+    color: rgba(255, 0, 0, 0.7);
+  }
+}
+
+.input__error {
+  display: block;
+  color: $error-text-color;
+  opacity: 0.5;
+  margin-top: 17px;
+}

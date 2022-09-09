@@ -1,8 +1,10 @@
+import Container from "../components/Container";
+
 function Home() {
   return (
-    <div>
+    <Container>
       <h2>Home Page</h2>
-    </div>
+    </Container>
   );
 }
 
