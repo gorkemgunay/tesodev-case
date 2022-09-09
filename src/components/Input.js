@@ -1,12 +1,14 @@
 function Input({ label, htmlFor, value, setValue, error, ...props }) {
   return (
     <div className="input__container">
-      <label
-        htmlFor={htmlFor}
-        className={`input__label ${error && "label-error"}`}
-      >
-        {label}
-      </label>
+      {label && (
+        <label
+          htmlFor={htmlFor}
+          className={`input__label ${error && "label-error"}`}
+        >
+          {label}
+        </label>
+      )}
       <input
         id={htmlFor}
         value={value}

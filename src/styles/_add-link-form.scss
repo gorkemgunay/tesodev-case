@@ -1,0 +1,13 @@
+.add-link-form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 590px;
+  input {
+    width: 100%;
+  }
+  button {
+    width: 138px;
+    align-self: flex-end;
+  }
+}

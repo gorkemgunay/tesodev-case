@@ -1,0 +1,16 @@
+.search__form {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  input {
+    width: 646px;
+    padding: 0 48px;
+  }
+  img {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+  }
+}
