@@ -34,7 +34,7 @@ function SearchResult({ search }) {
               city={item[5]}
             />
           ))}
-          <Link to="search-results">Show more...</Link>
+          <Link to="/search-results">Show more...</Link>
         </div>
       )}
     </>

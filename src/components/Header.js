@@ -17,7 +17,9 @@ function Header({ showLogo, showSearch, showReturn, showButton }) {
       </div>
       {showButton && (
         <div className="page-header__right">
-          <Button>Add new record</Button>
+          <Link to="/add-link">
+            <Button>Add new record</Button>
+          </Link>
         </div>
       )}
     </header>
