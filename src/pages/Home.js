@@ -1,10 +1,14 @@
 import Container from "../components/Container";
+import Footer from "../components/Footer";
 
 function Home() {
   return (
-    <Container>
-      <h2>Home Page</h2>
-    </Container>
+    <main>
+      <Container>
+        <h2>Home Page</h2>
+      </Container>
+      <Footer />
+    </main>
   );
 }
 

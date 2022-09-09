@@ -1,0 +1,28 @@
+.page-footer {
+  div {
+    display: flex;
+    gap: 30px;
+    padding: 27px 24px;
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  background-color: rgba(41, 78, 152, 0.72);
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    h3 {
+      color: $white-color;
+      font-size: 16px;
+    }
+    p {
+      color: $white-color;
+      max-width: 420px;
+    }
+  }
+  img {
+    max-width: 100%;
+    display: block;
+  }
+}
