@@ -9,8 +9,10 @@ function DataProvider({ children }) {
   );
 
   useEffect(() => {
-    const jsonData = _data.data;
-    localStorage.setItem("data", JSON.stringify(jsonData));
+    if (!data) {
+      const jsonData = _data.data;
+      localStorage.setItem("data", JSON.stringify(jsonData));
+    }
   }, [data]);
 
   return (

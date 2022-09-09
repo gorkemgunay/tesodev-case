@@ -7,7 +7,7 @@ import Button from "./Button";
 import Error from "./Error";
 
 function AddLinkForm() {
-  const { setData } = useDataContext();
+  const { data, setData } = useDataContext();
   const [fullName, setFullName] = useState("");
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
@@ -58,6 +58,13 @@ function AddLinkForm() {
       setCountry("");
       setCity("");
       setEmail("");
+      localStorage.setItem(
+        "data",
+        JSON.stringify([
+          ...data,
+          [fullName, "Tesodev", email, "09/09/2022", country, city],
+        ])
+      );
       setData((prev) => [
         ...prev,
         [fullName, "Tesodev", email, "09/09/2022", country, city],

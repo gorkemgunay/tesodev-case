@@ -2,12 +2,28 @@ import { Link } from "react-router-dom";
 import Button from "./Button";
 import Search from "./Search";
 
-function Header({ showLogo, showSearch, showReturn, showButton }) {
+function Header({
+  showLogo,
+  showSearch,
+  search,
+  setSearch,
+  showReturn,
+  showButton,
+}) {
   return (
     <header className="page-header">
       <div className="page-header__left">
-        {showLogo && <img src="./assets/images/logo.png" alt="logo" />}
-        {showSearch && <Search />}
+        {showLogo && (
+          <Link to="/">
+            <img
+              src="./assets/images/logo.png"
+              alt="logo"
+              className="page-header__logo"
+            />
+          </Link>
+        )}
+
+        {showSearch && <Search value={search} setValue={setSearch} />}
         {showReturn && (
           <Link to="/" className="page-header__return">
             <img src="./assets/icons/back.svg" alt="return" />

@@ -1,0 +1,34 @@
+.search-results-page {
+  &__wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  &__results {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    > div {
+      height: 78px;
+      position: relative;
+      &:not(:last-child) {
+        &::before {
+          position: absolute;
+          content: "";
+          bottom: -12px;
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+          width: 700px;
+          height: 1px;
+          background-color: #7e7e7e;
+        }
+      }
+    }
+  }
+  &__sort {
+    display: flex;
+    align-items: center;
+  }
+}

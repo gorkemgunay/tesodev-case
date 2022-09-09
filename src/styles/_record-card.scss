@@ -34,9 +34,11 @@
     flex-direction: column;
     gap: 4px;
     p {
+      align-self: flex-end;
       color: $text-second-black-color;
     }
     strong {
+      align-self: flex-end;
       color: $text-second-black-color;
       font-weight: 500;
     }

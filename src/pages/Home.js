@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
+import { createSearchParams } from "react-router-dom";
 import Container from "../components/Container";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -8,6 +10,18 @@ import Slider from "../components/Slider";
 
 function Home() {
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
+
+  const searchHandler = (e) => {
+    e.preventDefault();
+    navigate({
+      pathname: "/search-results",
+      search: `?${createSearchParams({
+        search,
+      })}`,
+    });
+  };
+
   return (
     <div className="home-page">
       <Container>
@@ -23,7 +37,11 @@ function Home() {
 
         <div className="home-page__search">
           <h2>Find in records</h2>
-          <Search value={search} setValue={setSearch} />
+          <Search
+            value={search}
+            setValue={setSearch}
+            onSubmit={(e) => searchHandler(e)}
+          />
           <SearchResult search={search} />
         </div>
         <div className="home-page__news">

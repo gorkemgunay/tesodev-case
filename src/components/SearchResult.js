@@ -8,10 +8,11 @@ function SearchResult({ search }) {
   const [filteredData, setFilteredData] = useState(null);
 
   useEffect(() => {
-    if (search) {
+    const trimSearch = search.trim();
+    if (trimSearch.length >= 2) {
       const filter = data
         .filter((item) =>
-          item[1].toLowerCase().startsWith(search.toLowerCase())
+          item[1].toLowerCase().startsWith(trimSearch.toLowerCase())
         )
         .slice(0, 3);
       if (filter.length) {
