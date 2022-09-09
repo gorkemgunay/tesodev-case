@@ -36,6 +36,7 @@ function Slider() {
       <div className="slider__cards">
         {sliderData.map((slider, index) => (
           <SliderCard
+            key={index}
             image={slider.image}
             title={slider.title}
             date={slider.date}

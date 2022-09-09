@@ -1,0 +1,21 @@
+.search-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 16px;
+  width: 646px;
+  margin-top: 16px;
+  border: 1px solid $text-second-black-color;
+  border-radius: 24px;
+  background-color: $white-color;
+  > div {
+    width: 600px;
+    height: 63px;
+  }
+  a {
+    margin-top: 8px;
+    color: $text-black-color;
+    font-weight: 700;
+  }
+}
