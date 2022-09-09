@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDataContext } from "../contexts/DataContext";
+import { useNavigate } from "react-router";
 import Form from "./Form";
 import Input from "./Input";
 import Button from "./Button";
-import { useNavigate } from "react-router";
+import Error from "./Error";
 
 function AddLinkForm() {
   const { setData } = useDataContext();
@@ -11,7 +12,7 @@ function AddLinkForm() {
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
   const [email, setEmail] = useState("");
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
 
   const submitHandler = (e) => {
@@ -65,44 +66,59 @@ function AddLinkForm() {
     }
   };
 
+  useEffect(() => {
+    const timer = setTimeout(() => setErrors({}), 5000);
+    return () => {
+      clearInterval(timer);
+    };
+  });
+
   return (
-    <Form onSubmit={(e) => submitHandler(e)} className="add-link-form">
-      <Input
-        label="Name Surname"
-        htmlFor="fullName"
-        placeholder="Enter name and surname"
-        value={fullName}
-        setValue={setFullName}
-        error={errors.fullName}
-      />
-      <Input
-        label="Country"
-        htmlFor="country"
-        placeholder="Enter a country"
-        value={country}
-        setValue={setCountry}
-        error={errors.country}
-      />
-      <Input
-        label="City"
-        htmlFor="city"
-        placeholder="Enter a city"
-        value={city}
-        setValue={setCity}
-        error={errors.city}
-      />
-      <Input
-        label="Email"
-        htmlFor="email"
-        placeholder="Enter a e-mail (abc@xyz.com)"
-        value={email}
-        setValue={setEmail}
-        error={errors.email}
-      />
-      <Button type="submit" disabled={!fullName || !country || !city || !email}>
-        Add
-      </Button>
-    </Form>
+    <>
+      <Form onSubmit={(e) => submitHandler(e)} className="add-link-form">
+        <Input
+          label="Name Surname"
+          htmlFor="fullName"
+          placeholder="Enter name and surname"
+          value={fullName}
+          setValue={setFullName}
+          error={errors.fullName}
+        />
+        <Input
+          label="Country"
+          htmlFor="country"
+          placeholder="Enter a country"
+          value={country}
+          setValue={setCountry}
+          error={errors.country}
+        />
+        <Input
+          label="City"
+          htmlFor="city"
+          placeholder="Enter a city"
+          value={city}
+          setValue={setCity}
+          error={errors.city}
+        />
+        <Input
+          label="Email"
+          htmlFor="email"
+          placeholder="Enter a e-mail (abc@xyz.com)"
+          value={email}
+          setValue={setEmail}
+          error={errors.email}
+        />
+        <Button
+          type="submit"
+          disabled={!fullName || !country || !city || !email}
+        >
+          Add
+        </Button>
+      </Form>
+      {Object.keys(errors).length !== 0 && (
+        <Error errors={errors} setErrors={setErrors} />
+      )}
+    </>
   );
 }
 
