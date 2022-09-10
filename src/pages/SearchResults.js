@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import Container from "../components/Container";
 import Header from "../components/Header";
 import RecordCard from "../components/RecordCard";
+import OrderBy from "../components/OrderBy";
 import { useDataContext } from "../contexts/DataContext";
 
 function SearchResults() {
@@ -97,21 +98,7 @@ function SearchResults() {
             </div>
           )}
           {filteredData && (
-            <div className="search-results-page__sort">
-              <img src="./assets/icons/sort.svg" alt="sort" />
-              <select
-                value={orderBy}
-                onChange={(e) => setOrderBy(e.target.value)}
-              >
-                <option value="" disabled>
-                  Order By
-                </option>
-                <option value="name-ascending">Name ascending</option>
-                <option value="name-descending">Name descending</option>
-                <option value="year-ascending">Year ascending</option>
-                <option value="year-descending">Year descending</option>
-              </select>
-            </div>
+            <OrderBy orderBy={orderBy} setOrderBy={setOrderBy} />
           )}
         </div>
       </Container>
