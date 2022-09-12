@@ -29,14 +29,16 @@ function SearchResult({ search }) {
     <>
       {filteredData && (
         <div className="search-result">
-          {filteredData?.map((item, index) => (
-            <RecordCard
-              key={index}
-              company={item[1]}
-              country={item[4]}
-              city={item[5]}
-            />
-          ))}
+          <div className="search-result__body">
+            {filteredData?.map((item, index) => (
+              <RecordCard
+                key={index}
+                company={item[1]}
+                country={item[4]}
+                city={item[5]}
+              />
+            ))}
+          </div>
           <Link to={`/search-results?search=${search}`}>Show more...</Link>
         </div>
       )}
