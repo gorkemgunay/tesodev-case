@@ -3,8 +3,8 @@ function Error({ errors, setErrors }) {
     <div className="error">
       <div className="error__content">
         <h4>Error while adding link element</h4>
-        {Object.values(errors).map((err) => (
-          <div>{err}</div>
+        {Object.values(errors).map((err, index) => (
+          <div key={index}>{err}</div>
         ))}
       </div>
       <div className="error__pink">Error</div>
