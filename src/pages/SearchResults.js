@@ -29,16 +29,18 @@ function SearchResults() {
   }, [data, filteredData, sortParam]);
 
   useEffect(() => {
-    const trimSearch = searchParam.trim();
+    const trimSearch = search.trim();
     if (trimSearch.length >= 2) {
-      const filter = data.filter((item) =>
-        item[0].toLowerCase().includes(trimSearch.toLowerCase())
+      const filter = data.filter(
+        (item) =>
+          item[0].toLowerCase().includes(trimSearch.toLowerCase()) ||
+          item[1].toLowerCase().includes(trimSearch.toLowerCase())
       );
       if (filter.length) {
         setFilteredData(filter);
       }
     }
-  }, [data, searchParam]);
+  }, [data, search]);
 
   useEffect(() => {
     if (searchParam === "") {

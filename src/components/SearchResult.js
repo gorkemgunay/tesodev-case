@@ -11,8 +11,10 @@ function SearchResult({ search }) {
     const trimSearch = search.trim();
     if (trimSearch.length >= 2) {
       const filter = data
-        .filter((item) =>
-          item[0].toLowerCase().includes(trimSearch.toLowerCase())
+        .filter(
+          (item) =>
+            item[0].toLowerCase().includes(trimSearch.toLowerCase()) ||
+            item[1].toLowerCase().includes(trimSearch.toLowerCase())
         )
         .slice(0, 3);
       if (filter.length) {

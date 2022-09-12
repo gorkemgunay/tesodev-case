@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { createSearchParams } from "react-router-dom";
+import { createSearchParams, Link } from "react-router-dom";
 import Container from "../components/Container";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -27,11 +27,13 @@ function Home() {
       <Container>
         <Header showButton />
         <div className="home-page__logo">
-          <img
-            src="./assets/images/logo.png"
-            alt="logo"
-            className="home-page"
-          />
+          <Link to="/">
+            <img
+              src="./assets/images/logo.png"
+              alt="logo"
+              className="home-page"
+            />
+          </Link>
           <p>Search app</p>
         </div>
 
