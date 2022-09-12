@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import RecordCard from "../components/RecordCard";
 import OrderBy from "../components/OrderBy";
 import { useDataContext } from "../contexts/DataContext";
+import Pagination from "../components/Pagination";
 
 function SearchResults() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -13,6 +14,8 @@ function SearchResults() {
   const [search, setSearch] = useState(searchParam || "");
   const [filteredData, setFilteredData] = useState(null);
   const [orderBy, setOrderBy] = useState(sortParam || "");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [dataPerPage] = useState(5);
   const { data } = useDataContext();
 
   useEffect(() => {
@@ -29,7 +32,7 @@ function SearchResults() {
     const trimSearch = searchParam.trim();
     if (trimSearch.length >= 2) {
       const filter = data.filter((item) =>
-        item[1].toLowerCase().startsWith(trimSearch.toLowerCase())
+        item[0].toLowerCase().includes(trimSearch.toLowerCase())
       );
       if (filter.length) {
         setFilteredData(filter);
@@ -71,6 +74,10 @@ function SearchResults() {
     }
   }, [orderBy]);
 
+  const indexOfLastData = currentPage * dataPerPage;
+  const indexOfFirstData = indexOfLastData - dataPerPage;
+  const currentData = filteredData?.slice(indexOfFirstData, indexOfLastData);
+
   return (
     <div className="search-results-page">
       <Header
@@ -83,18 +90,28 @@ function SearchResults() {
       <Container>
         <div className="search-results-page__wrapper">
           {filteredData && (
-            <div className="search-results-page__results">
-              {filteredData?.map((item, index) => (
-                <RecordCard
-                  key={index}
-                  company={item[1]}
-                  fullName={item[0]}
-                  date={item[3]}
-                  country={item[4]}
-                  city={item[5]}
-                  left
+            <div className="search-results-page__body">
+              <div className="search-results-page__results">
+                {currentData?.map((item, index) => (
+                  <RecordCard
+                    key={index}
+                    company={item[1]}
+                    fullName={item[0]}
+                    date={item[3]}
+                    country={item[4]}
+                    city={item[5]}
+                    left
+                  />
+                ))}
+              </div>
+              {Math.ceil(filteredData.length) > 3 && (
+                <Pagination
+                  dataPerPage={dataPerPage}
+                  totalData={filteredData.length}
+                  currentPage={currentPage}
+                  setCurrentPage={setCurrentPage}
                 />
-              ))}
+              )}
             </div>
           )}
           {filteredData && (

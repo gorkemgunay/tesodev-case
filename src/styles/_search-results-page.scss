@@ -1,4 +1,9 @@
 .search-results-page {
+  &__body {
+    display: flex;
+    flex-direction: column;
+    width: 860px;
+  }
   &__wrapper {
     display: flex;
     align-items: flex-start;

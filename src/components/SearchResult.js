@@ -12,7 +12,7 @@ function SearchResult({ search }) {
     if (trimSearch.length >= 2) {
       const filter = data
         .filter((item) =>
-          item[1].toLowerCase().startsWith(trimSearch.toLowerCase())
+          item[0].toLowerCase().includes(trimSearch.toLowerCase())
         )
         .slice(0, 3);
       if (filter.length) {
