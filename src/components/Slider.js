@@ -1,4 +1,6 @@
 import SliderCard from "./SliderCard";
+import Button from "./Button";
+import { useRef } from "react";
 
 const sliderData = [
   {
@@ -19,21 +21,45 @@ const sliderData = [
     date: "1h ago",
     author: "Troy Corlson",
   },
-  // {
-  //   image: "./assets/images/slider-image.png",
-  //   title: "A Plan to Rebuild the Bus Terminal Everyone Loves to Hate",
-  //   date: "1h ago",
-  //   author: "Troy Corlson",
-  // },
+  {
+    image: "./assets/images/slider-image.png",
+    title: "A Plan to Rebuild the Bus Terminal Everyone Loves to Hate",
+    date: "1h ago",
+    author: "Troy Corlson",
+  },
+  {
+    image: "./assets/images/slider-image.png",
+    title: "A Plan to Rebuild the Bus Terminal Everyone Loves to Hate",
+    date: "1h ago",
+    author: "Troy Corlson",
+  },
 ];
 
 function Slider() {
+  const sliderRef = useRef();
+
+  const previousSlide = () => {
+    if (sliderRef.current.scrollLeft === 0) {
+      sliderRef.current.scrollLeft = (sliderData.length - 3) * 351;
+    } else {
+      sliderRef.current.scrollLeft = sliderRef.current.scrollLeft - 351;
+    }
+  };
+
+  const nextSlide = () => {
+    if (sliderRef.current.scrollLeft === (sliderData.length - 3) * 351) {
+      sliderRef.current.scrollLeft = 0;
+    } else {
+      sliderRef.current.scrollLeft = sliderRef.current.scrollLeft + 351;
+    }
+  };
+
   return (
     <div className="slider">
-      <button className="slider__button">
+      <Button className="slider__button" onClick={previousSlide}>
         <img src="./assets/icons/left-arrow.svg" alt="left-arrow" />
-      </button>
-      <div className="slider__cards">
+      </Button>
+      <div className="slider__cards" ref={sliderRef}>
         {sliderData.map((slider, index) => (
           <SliderCard
             key={index}
@@ -44,9 +70,9 @@ function Slider() {
           />
         ))}
       </div>
-      <button className="slider__button">
+      <Button className="slider__button" onClick={nextSlide}>
         <img src="./assets/icons/right-arrow.svg" alt="right-arrow" />
-      </button>
+      </Button>
     </div>
   );
 }

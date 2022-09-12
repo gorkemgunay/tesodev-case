@@ -3,9 +3,16 @@
   align-items: center;
   gap: 24px;
   &__cards {
+    width: 1029px;
     display: flex;
     align-items: center;
     gap: 24px;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
   button {
     display: flex;

@@ -1,13 +1,20 @@
 .slider-card {
   width: 327px;
+  height: 279px;
+  h4 {
+    font-size: 16px;
+    color: $text-black-color;
+    margin-top: 12px;
+    margin-bottom: 8px;
+  }
+  img {
+    width: 327px;
+    height: 195px;
+  }
   &__footer {
     display: flex;
     align-items: center;
     gap: 8px;
-    h4 {
-      font-size: 16px;
-      color: $text-black-color;
-    }
     span {
       background-color: #6c7072;
       width: 3px;
