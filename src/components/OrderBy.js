@@ -3,7 +3,9 @@ function OrderBy({ orderBy, setOrderBy }) {
     <div className="order-by">
       <img src="./assets/icons/sort.svg" alt="sort" />
       <select value={orderBy} onChange={(e) => setOrderBy(e.target.value)}>
-        <option value="">Order By</option>
+        <option value="" disabled>
+          Order By
+        </option>
         <option value="name-ascending">Name ascending</option>
         <option value="name-descending">Name descending</option>
         <option value="year-ascending">Year ascending</option>
