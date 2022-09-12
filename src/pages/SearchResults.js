@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import {
+  createSearchParams,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 import Container from "../components/Container";
 import Header from "../components/Header";
 import RecordCard from "../components/RecordCard";
 import OrderBy from "../components/OrderBy";
-import { useDataContext } from "../contexts/DataContext";
 import Pagination from "../components/Pagination";
+import { useDataContext } from "../contexts/DataContext";
 
 function SearchResults() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -17,6 +21,7 @@ function SearchResults() {
   const [currentPage, setCurrentPage] = useState(1);
   const [dataPerPage] = useState(5);
   const { data } = useDataContext();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setSearchParams({ search, sort: orderBy });
@@ -74,7 +79,34 @@ function SearchResults() {
         )
       );
     }
-  }, [orderBy]);
+  }, [orderBy, search]);
+
+  const searchHandler = (e) => {
+    e.preventDefault();
+    if (search && orderBy) {
+      navigate({
+        pathname: "/search-results",
+        search: `?${createSearchParams({
+          search,
+          sort: orderBy,
+        })}`,
+      });
+    } else if (search) {
+      navigate({
+        pathname: "/search-results",
+        search: `?${createSearchParams({
+          search,
+        })}`,
+      });
+    } else if (orderBy) {
+      navigate({
+        pathname: "/search-results",
+        search: `?${createSearchParams({
+          sort: orderBy,
+        })}`,
+      });
+    }
+  };
 
   const indexOfLastData = currentPage * dataPerPage;
   const indexOfFirstData = indexOfLastData - dataPerPage;
@@ -87,6 +119,7 @@ function SearchResults() {
         showSearch
         search={search}
         setSearch={setSearch}
+        onSubmit={(e) => searchHandler(e)}
         showButton
       />
       <Container>

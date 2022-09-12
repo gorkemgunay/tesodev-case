@@ -7,6 +7,7 @@ function Header({
   showSearch,
   search,
   setSearch,
+  onSubmit,
   showReturn,
   showButton,
 }) {
@@ -23,7 +24,9 @@ function Header({
           </Link>
         )}
 
-        {showSearch && <Search value={search} setValue={setSearch} />}
+        {showSearch && (
+          <Search value={search} setValue={setSearch} onSubmit={onSubmit} />
+        )}
         {showReturn && (
           <Link to="/" className="page-header__return">
             <img src="./assets/icons/back.svg" alt="return" />
